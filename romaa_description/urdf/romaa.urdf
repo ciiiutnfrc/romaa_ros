@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+<robot name="romaa">
+
+  <material name="blue">
+    <color rgba="0 0 0.8 1" />
+  </material>
+
+  <!-- Base Link (bottom) -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://romaa_description/meshes/romaa_bottom.stl" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+  </link>
+
+</robot>
