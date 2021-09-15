@@ -22,4 +22,5 @@ roslaunch romaa_gazebo spawn_urdf.launch urdf:=romaa.urdf
 ## Documentación
 
   * [Redimensionar archivo de malla en formato STL](doc/ResizeSTL.md)
+  * [Cálculo de parámetros dinámicos con FreeCAD](doc/FreeCADFCInfo.md)
 
