@@ -11,6 +11,7 @@ Los pasos a seguir son:
   1. Dividir por 1000 la escala en las coordenadas X, Y y Z.
   1. Exportar el archivo en formato `stl`.
 
+![Resize STL using Blender](RoMAABlender.png)
 
 Nota:
   * La versión de FreeCAD utilizada para exportar la malla es la 0.18.4

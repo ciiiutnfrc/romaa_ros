@@ -21,3 +21,4 @@ Para determinar los parámetros de la dinámica de una pieza se deben aplicar lo
   1. Seleccionar la pieza a la cual se le quieren calcular los parámetros.
   1. En la sección _"Surface and Volume"_ cargar la densidad del material (2.7 Kg/dm3 para el aluminio y 7.5 Kg/dm3 para el hierro).
 
+![FCInfo macro of FreeCAD](FreeCADFCInfo.png)
