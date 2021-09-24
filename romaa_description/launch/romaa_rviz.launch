@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Values passed by command line input -->
-  <arg name="model" default="romaa.urdf" />
   <arg name="gui" default="False" />
 
   <!-- Set this parameters on Parameter Server -->
-  <param name="robot_description" textfile="$(find romaa_description)/urdf/$(arg model)" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find romaa_description)/urdf/romaa.xacro'" />
 
   <!-- Start nodes: joint_state_publisher, robot_state publisher, joint_state_publisher_gui and rviz -->
   <node pkg="joint_state_publisher" name="joint_state_publisher" type="joint_state_publisher" />

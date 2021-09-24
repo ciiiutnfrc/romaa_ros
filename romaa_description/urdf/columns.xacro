@@ -1,0 +1,40 @@
+<?xml version='1.0'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Macro for robot main columns -->
+  <xacro:macro name="main_column" params="name origin_xyz">
+    <link name="${name}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.050 0.015 0.154" />
+        </geometry>
+        <material name="black" />
+      </visual>
+    </link>
+    <joint name="${name}_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="${name}_link" />
+      <origin xyz="${origin_xyz}" rpy="0 0 0" />
+    </joint>
+  </xacro:macro>
+
+  <!-- Macro for robot secondary columns -->
+  <xacro:macro name="secondary_column" params="name origin_xyz">
+    <link name="${name}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="0.154" radius="0.008" />
+        </geometry>
+        <material name="black" />
+      </visual>
+    </link>
+    <joint name="${name}_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="${name}_link" />
+      <origin xyz="${origin_xyz}" rpy="0 0 0" />
+    </joint>
+  </xacro:macro>
+
+</robot>
