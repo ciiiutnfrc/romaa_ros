@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   
-  <arg name="urdf" />
-  <arg name="model" default="romaa" />
+  <arg name="model" default="romaa.urdf" />
+  <arg name="robot_name" default="romaa" />
 
   <arg name="x" default="0" />
   <arg name="y" default="0" />
@@ -11,10 +11,10 @@
   <arg name="P" default="0" />
   <arg name="Y" default="0" />
 
-  <param name="robot_description" command="cat '$(find romaa_description)/urdf/$(arg urdf)'" />
+  <param name="robot_description" command="cat '$(find romaa_description)/urdf/$(arg model)'" />
 
   <node pkg="gazebo_ros" type="spawn_model" name="romaa_spawn" output="screen"
-    args="-urdf -param robot_description -model $(arg model)
+    args="-urdf -param robot_description -model $(arg robot_name)
     -x $(arg x) -y $(arg y) -z $(arg z)
     -R $(arg R) -P $(arg P) -Y $(arg Y)" />
 

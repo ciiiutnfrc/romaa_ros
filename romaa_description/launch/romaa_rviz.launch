@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Values passed by command line input -->
-  <arg name="model" />
+  <arg name="model" default="romaa.urdf" />
   <arg name="gui" default="False" />
 
   <!-- Set this parameters on Parameter Server -->

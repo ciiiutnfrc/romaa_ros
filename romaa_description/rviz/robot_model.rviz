@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /TF1
       Splitter Ratio: 0.5
     Tree Height: 566
   - Class: rviz/Selection
@@ -57,14 +58,40 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_link:
+          Value: true
+        fleft_column_link:
+          Value: true
+        fright_column_link:
+          Value: true
+        left_column_link:
+          Value: true
+        right_column_link:
+          Value: true
+        rleft_column_link:
+          Value: true
+        rright_column_link:
+          Value: true
       Marker Alpha: 1
-      Marker Scale: 1
+      Marker Scale: 0.5
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: true
+      Show Names: false
       Tree:
-        {}
+        base_link:
+          fleft_column_link:
+            {}
+          fright_column_link:
+            {}
+          left_column_link:
+            {}
+          right_column_link:
+            {}
+          rleft_column_link:
+            {}
+          rright_column_link:
+            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -78,6 +105,36 @@ Visualization Manager:
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
         base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fleft_column_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fright_column_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_column_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_column_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rleft_column_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rright_column_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -116,7 +173,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.7850098609924316
+      Distance: 2.0058369636535645
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -124,17 +181,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.3893410563468933
-        Y: 0.7330901622772217
-        Z: -0.8352076411247253
+        X: -0.43373969197273254
+        Y: 0.7563318014144897
+        Z: -0.7514265179634094
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7103984951972961
+      Pitch: 0.7153987884521484
       Target Frame: <Fixed Frame>
-      Yaw: 5.103575229644775
+      Yaw: 5.293572425842285
     Saved: ~
 Window Geometry:
   Displays:
