@@ -67,7 +67,7 @@
             iyy="${sc_ixx_yy}" iyz="0" izz="${sc_izz}" />
       </inertial>
       <collision name="collision_base_link">
-        <origin xyz="0 0 ${h / 2}" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <cylinder length="${h}" radius="${r}" />
         </geometry>
