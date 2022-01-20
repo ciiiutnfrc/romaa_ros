@@ -15,7 +15,7 @@ roslaunch romaa_description romaa_rviz.launch
 Para cargar el modelo del robot en el simulador Gazebo hay que ejecutar:
 ```
 roslaunch gazebo_ros empty_world.launch
-roslaunch romaa_gazebo spawn_urdf.launch model:=romaa.urdf
+roslaunch romaa_gazebo spawn_xacro.launch
 ```
 
 

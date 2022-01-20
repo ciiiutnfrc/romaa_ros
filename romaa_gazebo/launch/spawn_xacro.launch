@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  
+  <arg name="model" default="romaa.xacro" />
+  <arg name="robot_name" default="romaa" />
+
+  <arg name="x" default="0" />
+  <arg name="y" default="0" />
+  <arg name="z" default="0.5" />
+  <arg name="R" default="0" />
+  <arg name="P" default="0" />
+  <arg name="Y" default="0" />
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find romaa_description)/urdf/romaa.xacro'" />
+
+  <node pkg="gazebo_ros" type="spawn_model" name="romaa_spawn" output="screen"
+    args="-urdf -param robot_description -model $(arg robot_name)
+    -x $(arg x) -y $(arg y) -z $(arg z)
+    -R $(arg R) -P $(arg P) -Y $(arg Y)" />
+
+</launch>

@@ -1,16 +1,47 @@
 <?xml version='1.0'?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:property name="D" value="2700" />   <!-- [Kg/m3] -->
+  <xacro:property name="h" value="0.154" /> <!-- [m] -->
+  <xacro:property name="r" value="0.008" /> <!-- [m] -->
+  <xacro:property name="w" value="0.050" /> <!-- [m] -->
+  <xacro:property name="d" value="0.015" /> <!-- [m] -->
+
+  <!-- Main column properties -->
+  <xacro:property name="mc_volume" value="${h * w * d}" />
+  <xacro:property name="mc_mass" value="${mc_volume * D}" />
+  <xacro:property name="mc_ixx" value="${(1/12) * mc_mass * (d**2 + h**2)}" />
+  <xacro:property name="mc_iyy" value="${(1/12) * mc_mass * (w**2 + h**2)}" />
+  <xacro:property name="mc_izz" value="${(1/12) * mc_mass * (d**2 + w**2)}" />
+
+  <!-- Secondary column properties -->
+  <xacro:property name="sc_volume" value="${pi * r**2 * h}" />
+  <xacro:property name="sc_mass" value="${sc_volume * D}" />
+  <xacro:property name="sc_ixx_yy" value="${(1/12) * sc_mass * h**2}" />
+  <xacro:property name="sc_izz" value="${(1/2) * sc_mass * r**2}" />
+
   <!-- Macro for robot main columns -->
   <xacro:macro name="main_column" params="name origin_xyz">
     <link name="${name}_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.050 0.015 0.154" />
+          <box size="${w} ${d} ${h}" />
         </geometry>
         <material name="black" />
       </visual>
+      <inertial>
+        <origin xyz="0 0 ${h / 2}" rpy="0 0 0" />
+        <mass value="${mc_mass}" />
+        <inertia ixx="${mc_ixx}" ixy="0" ixz="0"
+            iyy="${mc_iyy}" iyz="0" izz="${mc_izz}" />
+      </inertial>
+      <collision name="collision_base_link">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${w} ${d} ${h}" />
+        </geometry>
+      </collision>
     </link>
     <joint name="${name}_joint" type="fixed">
       <parent link="base_link" />
@@ -25,10 +56,22 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder length="0.154" radius="0.008" />
+          <cylinder length="${h}" radius="${r}" />
         </geometry>
         <material name="black" />
       </visual>
+      <inertial>
+        <origin xyz="0 0 ${h / 2}" rpy="0 0 0" />
+        <mass value="${sc_mass}" />
+        <inertia ixx="${sc_ixx_yy}" ixy="0" ixz="0"
+            iyy="${sc_ixx_yy}" iyz="0" izz="${sc_izz}" />
+      </inertial>
+      <collision name="collision_base_link">
+        <origin xyz="0 0 ${h / 2}" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="${h}" radius="${r}" />
+        </geometry>
+      </collision>
     </link>
     <joint name="${name}_joint" type="fixed">
       <parent link="base_link" />

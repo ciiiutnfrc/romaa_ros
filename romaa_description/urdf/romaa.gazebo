@@ -1,0 +1,26 @@
+<?xml version='1.0'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="left_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="right_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="fleft_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="fright_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="rleft_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="rright_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+</robot>
