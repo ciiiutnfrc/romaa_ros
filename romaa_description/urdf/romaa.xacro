@@ -11,7 +11,7 @@
     <color rgba="0.05 0.05 0.05 1" />
   </material>
 
-  <!-- Base Link (bottom) -->
+  <!-- Base link (bottom) -->
   <link name="base_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -47,5 +47,65 @@
   <xacro:secondary_column name="fright_column" origin_xyz="0.164 -0.139 0.083" />  <!-- Front-right -->
   <xacro:secondary_column name="rleft_column" origin_xyz="-0.337 0.212 0.083" />  <!-- Rear-left -->
   <xacro:secondary_column name="rright_column" origin_xyz="-0.337 -0.212 0.083" />  <!-- Rear-right -->
+
+  <!-- Top-front link -->
+  <link name="top_front_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://romaa_description/meshes/romaa_top_front.stl" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0.003" rpy="0 0 0" />
+      <mass value="0.7186369596364028"/>
+      <inertia ixx="0.014812833616776537" ixy="0" ixz="0"
+        iyy="0.003404563417864952" iyz="0" izz="0.018213085212883666"/>
+    </inertial>
+
+    <collision name="collision_base_link">
+      <origin xyz="0.049 0 0.003" rpy="0 0 0" />
+      <geometry>
+        <box size="0.250 0.520 0.006"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="top_front_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="top_front_link" />
+    <origin xyz="0 0 0.160" rpy="0 0 0" />
+  </joint>
+
+  <!-- Top-rear link -->
+  <link name="top_rear_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://romaa_description/meshes/romaa_top_rear.stl" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0.003" rpy="0 0 0" />
+      <mass value="0.8885077118205166"/>
+      <inertia ixx="0.016809690318237213" ixy="0" ixz="0"
+        iyy="0.007046759808520824" iyz="0" izz="0.02385111908048711"/>
+    </inertial>
+
+    <collision name="collision_base_link">
+      <origin xyz="0 0 0.003" rpy="0 0 0" />
+      <geometry>
+        <box size="0.320 0.520 0.006"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="top_rear_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="top_rear_link" />
+    <origin xyz="-0.236 0 0.160" rpy="0 0 0" />
+  </joint>
 
 </robot>
