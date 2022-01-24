@@ -3,6 +3,7 @@
 
   <xacro:include filename="$(find romaa_description)/urdf/columns.xacro" />
   <xacro:include filename="$(find romaa_description)/urdf/romaa.gazebo" />
+  <xacro:include filename="$(find romaa_description)/urdf/wheels.xacro" />
 
   <material name="blue">
     <color rgba="0 0 0.8 1" />
@@ -12,6 +13,9 @@
   </material>
   <material name="dark_gray">
     <color rgba="0.12 0.12 0.12 1" />
+  </material>
+  <material name="light_gray">
+    <color rgba="0.4 0.4 0.4 1" />
   </material>
 
   <!-- Base link (bottom) -->
@@ -175,5 +179,10 @@
     <child link="battery_link" />
     <origin xyz="-0.19 0 0.069" rpy="0 0 0" />
   </joint>
+
+  <!-- Left wheel -->
+  <xacro:wheel name="left_wheel" reflect="1" />
+  <!-- Right wheel -->
+  <xacro:wheel name="right_wheel" reflect="-1" />
 
 </robot>

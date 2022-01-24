@@ -43,5 +43,35 @@
   <gazebo reference="battery_link">
     <material>Gazebo/DarkGray</material>
   </gazebo>
+  <gazebo reference="left_wheel_link">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+  <gazebo reference="right_wheel_link">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+      <alwaysOn>true</alwaysOn>
+      <legacyMode>true</legacyMode>
+      <updateRate>20</updateRate>
+      <leftJoint>left_wheel_joint</leftJoint>
+      <rightJoint>right_wheel_joint</rightJoint>
+      <wheelAcceleration>0</wheelAcceleration>
+      <wheelSeparation>0.440</wheelSeparation>
+      <wheelDiameter>0.140</wheelDiameter>
+      <torque>0.1</torque>
+      <wheelTorque>5</wheelTorque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometrySource>world</odometrySource>
+      <publishTf>1</publishTf>
+      <publishOdomTF>true</publishOdomTF>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishWheelTF>true</publishWheelTF>
+      <publishWheelJointState>false</publishWheelJointState>
+    </plugin>
+  </gazebo>
 
 </robot>
