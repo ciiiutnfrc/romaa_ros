@@ -28,5 +28,17 @@
   <gazebo reference="top_rear_link">
     <material>Gazebo/Blue</material>
   </gazebo>
+  <gazebo reference="fc_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="lc_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="rc_column_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="csupport_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
 
 </robot>

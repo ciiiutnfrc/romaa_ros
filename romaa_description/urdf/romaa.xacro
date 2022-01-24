@@ -42,11 +42,16 @@
   <xacro:main_column name="right_column" origin_xyz="-0.0835 -0.250 0.083" />
   
 
-  <!-- Front-left column -->
+  <!-- Secondary columns -->
   <xacro:secondary_column name="fleft_column" origin_xyz="0.164 0.139 0.083" />  <!-- Front-left -->
   <xacro:secondary_column name="fright_column" origin_xyz="0.164 -0.139 0.083" />  <!-- Front-right -->
   <xacro:secondary_column name="rleft_column" origin_xyz="-0.337 0.212 0.083" />  <!-- Rear-left -->
   <xacro:secondary_column name="rright_column" origin_xyz="-0.337 -0.212 0.083" />  <!-- Rear-right -->
+
+  <!-- Castor support columns -->
+  <xacro:castor_column name="fc_column" origin_xyz="-0.332  0    0.022815" />
+  <xacro:castor_column name="lc_column" origin_xyz="-0.380 -0.06 0.022815" />
+  <xacro:castor_column name="rc_column" origin_xyz="-0.380  0.06 0.022815" />
 
   <!-- Top-front link -->
   <link name="top_front_link">
@@ -106,6 +111,36 @@
     <parent link="base_link" />
     <child link="top_rear_link" />
     <origin xyz="-0.236 0 0.160" rpy="0 0 0" />
+  </joint>
+
+  <!-- Castor support link -->
+  <link name="csupport_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://romaa_description/meshes/romaa_castor_support.stl" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0.003" rpy="0 0 0" />
+      <mass value="0.190755"/>
+      <inertia ixx="0.00023339157749999997" ixy="0" ixz="0"
+        iyy="0.00014052256237261147" iyz="0" izz="0.0003727696098726115"/>
+    </inertial>
+
+    <collision name="collision_base_link">
+      <origin xyz="0 0 0.003" rpy="0 0 0" />
+      <geometry>
+        <box size="0.105 0.140 0.006"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="csupport_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="csupport_link" />
+    <origin xyz="-0.378 0 0.03963" rpy="0 0 0" />
   </joint>
 
 </robot>
