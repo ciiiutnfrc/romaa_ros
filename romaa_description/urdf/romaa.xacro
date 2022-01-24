@@ -10,6 +10,9 @@
   <material name="black">
     <color rgba="0.05 0.05 0.05 1" />
   </material>
+  <material name="dark_gray">
+    <color rgba="0.12 0.12 0.12 1" />
+  </material>
 
   <!-- Base link (bottom) -->
   <link name="base_link">
@@ -28,7 +31,7 @@
         iyy="0.09727669030336457" iyz="0" izz="0.17435142306541462"/>
     </inertial>
 
-    <collision name="collision_base_link">
+    <collision>
       <origin xyz="-0.111 0 0.003" rpy="0 0 0" />
       <geometry>
         <box size="0.57 0.52 0.006"/>
@@ -70,7 +73,7 @@
         iyy="0.003404563417864952" iyz="0" izz="0.018213085212883666"/>
     </inertial>
 
-    <collision name="collision_base_link">
+    <collision>
       <origin xyz="0.049 0 0.003" rpy="0 0 0" />
       <geometry>
         <box size="0.250 0.520 0.006"/>
@@ -100,7 +103,7 @@
         iyy="0.007046759808520824" iyz="0" izz="0.02385111908048711"/>
     </inertial>
 
-    <collision name="collision_base_link">
+    <collision>
       <origin xyz="0 0 0.003" rpy="0 0 0" />
       <geometry>
         <box size="0.320 0.520 0.006"/>
@@ -130,7 +133,7 @@
         iyy="0.00014052256237261147" iyz="0" izz="0.0003727696098726115"/>
     </inertial>
 
-    <collision name="collision_base_link">
+    <collision>
       <origin xyz="0 0 0.003" rpy="0 0 0" />
       <geometry>
         <box size="0.105 0.140 0.006"/>
@@ -141,6 +144,36 @@
     <parent link="base_link" />
     <child link="csupport_link" />
     <origin xyz="-0.378 0 0.03963" rpy="0 0 0" />
+  </joint>
+
+  <!-- Battery link -->
+  <link name="battery_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.175 0.166 0.126"/>
+      </geometry>
+      <material name="dark_gray" />
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="8.9"/>
+      <inertia ixx="0.032218760985599997" ixy="0" ixz="0"
+        iyy="0.0344954090208" iyz="0" izz="0.0431598759648"/>
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.175 0.166 0.126"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="battery_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="battery_link" />
+    <origin xyz="-0.19 0 0.069" rpy="0 0 0" />
   </joint>
 
 </robot>

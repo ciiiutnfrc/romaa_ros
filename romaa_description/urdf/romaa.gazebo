@@ -40,5 +40,8 @@
   <gazebo reference="csupport_link">
     <material>Gazebo/Blue</material>
   </gazebo>
+  <gazebo reference="battery_link">
+    <material>Gazebo/DarkGray</material>
+  </gazebo>
 
 </robot>
