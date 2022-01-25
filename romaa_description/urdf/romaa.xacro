@@ -48,7 +48,6 @@
   <!-- Right main column -->
   <xacro:main_column name="right_column" origin_xyz="-0.0835 -0.250 0.083" />
   
-
   <!-- Secondary columns -->
   <xacro:secondary_column name="fleft_column" origin_xyz="0.164 0.139 0.083" />  <!-- Front-left -->
   <xacro:secondary_column name="fright_column" origin_xyz="0.164 -0.139 0.083" />  <!-- Front-right -->
