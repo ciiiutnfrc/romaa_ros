@@ -5,15 +5,16 @@
   <xacro:property name="wheelbase" value="0.440" />
   <xacro:property name="wheel_radius" value="0.070" />
   <xacro:property name="wheel_thickness" value="0.025" />
-  <xacro:property name="wheel_zsep" value="0.033" />
+  <!-- z_sep = 35mm + 6mm -->
+  <xacro:property name="wheel_zsep" value="0.041" />
 
   <!-- Macro for robot wheels -->
-  <xacro:macro name="wheel" params="name reflect">
+  <xacro:macro name="drive_wheel" params="name reflect">
     <link name="${name}_link">
       <visual>
         <origin xyz="0 0 0" rpy="${pi / 2} 0 0" />
         <geometry>
-          <mesh filename="package://romaa_description/meshes/romaa_wheel.stl" />
+          <mesh filename="package://romaa_description/meshes/romaa_drive_wheel.stl" />
         </geometry>
         <material name="light_gray" />
       </visual>
@@ -31,6 +32,7 @@
       </collision>
     </link>
     <joint name="${name}_joint" type="continuous">
+      <dynamics damping="1.0" friction="1.0" /> 
       <!-- <origin xyz="0 ${reflect * wheelbase / 2}" rpy="${pi} 0 0" /> -->
       <origin xyz="0 ${reflect * wheelbase / 2} ${wheel_zsep}" rpy="0 0 0" />
       <parent link="base_link" />
@@ -38,4 +40,5 @@
       <axis xyz="0 1 0" />
     </joint>
   </xacro:macro>
+
 </robot>

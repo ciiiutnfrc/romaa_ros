@@ -3,7 +3,8 @@
 
   <xacro:include filename="$(find romaa_description)/urdf/columns.xacro" />
   <xacro:include filename="$(find romaa_description)/urdf/romaa.gazebo" />
-  <xacro:include filename="$(find romaa_description)/urdf/wheels.xacro" />
+  <xacro:include filename="$(find romaa_description)/urdf/drive_wheels.xacro" />
+  <xacro:include filename="$(find romaa_description)/urdf/castor_wheel.xacro" />
 
   <material name="blue">
     <color rgba="0 0 0.8 1" />
@@ -12,7 +13,7 @@
     <color rgba="0.05 0.05 0.05 1" />
   </material>
   <material name="dark_gray">
-    <color rgba="0.12 0.12 0.12 1" />
+    <color rgba="0.2 0.2 0.2 1" />
   </material>
   <material name="light_gray">
     <color rgba="0.4 0.4 0.4 1" />
@@ -150,38 +151,45 @@
   </joint>
 
   <!-- Battery link -->
+  <!--
   <link name="battery_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 ${-pi / 2}" />
       <geometry>
-        <box size="0.175 0.166 0.126"/>
+        <box size="0.175 0.166 0.125"/>
       </geometry>
       <material name="dark_gray" />
     </visual>
 
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <mass value="8.9"/>
-      <inertia ixx="0.032218760985599997" ixy="0" ixz="0"
-        iyy="0.0344954090208" iyz="0" izz="0.0431598759648"/>
+      <origin xyz="0 0 0" rpy="0 0 ${-pi / 2}" />
+      <mass value="11.467"/>
+      <inertia ixx="0.04126479814479167" ixy="0" ixz="0"
+        iyy="0.0441976080729167" iyz="0" izz="0.05559915751979169"/>
     </inertial>
 
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 ${-pi / 2}" />
       <geometry>
-        <box size="0.175 0.166 0.126"/>
+        <box size="0.175 0.166 0.125"/>
       </geometry>
     </collision>
   </link>
   <joint name="battery_joint" type="fixed">
     <parent link="base_link" />
     <child link="battery_link" />
-    <origin xyz="-0.19 0 0.069" rpy="0 0 0" />
+    <origin xyz="-0.209 0 0.0685" rpy="0 0 0" />
   </joint>
+  -->
 
-  <!-- Left wheel -->
-  <xacro:wheel name="left_wheel" reflect="1" />
-  <!-- Right wheel -->
-  <xacro:wheel name="right_wheel" reflect="-1" />
+  <!-- Left drive wheel -->
+  <xacro:drive_wheel name="left_wheel" reflect="1" />
+  <!-- Right drive wheel -->
+  <xacro:drive_wheel name="right_wheel" reflect="-1" />
+
+  <!-- Castor wheel -->
+  <!--
+  <xacro:castor_wheel name="castor" origin_xyz="-0.016 0 -0.00075" />
+  -->
 
 </robot>
