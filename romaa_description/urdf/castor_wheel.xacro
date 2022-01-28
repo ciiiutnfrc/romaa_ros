@@ -36,25 +36,25 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://romaa_description/meshes/romaa_castor_base.stl" />
+          <mesh filename="package://romaa_description/meshes/romaa_castor_cylinder.stl" />
         </geometry>
         <material name="dark_gray" />
       </visual>
       <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="0.022726972589783227" />
-        <inertia ixx="5.243689744256557e-06" ixy="0" ixz="0"
-            iyy="4.149252628753352e-06" iyz="0" izz="2.389246986591684e-06" />
+        <origin xyz="0.0048464279113944195 0 -0.0265" rpy="0 0 0" />
+        <mass value="0.03629327674887137" />
+        <inertia ixx="1.2058314484155499e-05" ixy="0" ixz="0"
+            iyy="9.601587537327375e-06" iyz="0" izz="6.537703376119888e-06" />
       </inertial>
       <collision>
         <origin xyz="0 0 -0.025" rpy="0 0 0" />
         <geometry>
-          <cylinder length="0.050" radius="0.012" />
+          <cylinder length="0.050" radius="0.030" />
         </geometry>
       </collision>
     </link>
     <joint name="${name}_rot1_joint" type="continuous">
-      <dynamics damping="0" friction="0.5" /> 
+      <!-- <dynamics damping="0" friction="0.2" /> -->
       <origin xyz="0 0 0.00075" rpy="0 0 0" />
       <parent link="${name}_b1_link" />
       <child link="${name}_b2_link" />
@@ -84,7 +84,7 @@
       </collision>
     </link>
     <joint name="${name}_rot2_joint" type="continuous">
-      <dynamics damping="0" friction="1" /> 
+      <dynamics damping="0" friction="0.2" /> 
       <origin xyz="-0.026 0 -0.04363" rpy="0 0 0" />
       <parent link="${name}_b2_link" />
       <child link="${name}_link" />

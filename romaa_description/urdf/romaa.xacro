@@ -2,9 +2,9 @@
 <robot name="romaa" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find romaa_description)/urdf/columns.xacro" />
-  <xacro:include filename="$(find romaa_description)/urdf/romaa.gazebo" />
   <xacro:include filename="$(find romaa_description)/urdf/drive_wheels.xacro" />
   <xacro:include filename="$(find romaa_description)/urdf/castor_wheel.xacro" />
+  <xacro:include filename="$(find romaa_description)/urdf/romaa.gazebo" />
 
   <material name="blue">
     <color rgba="0 0 0.8 1" />
@@ -30,7 +30,7 @@
     </visual>
 
     <inertial>
-      <origin xyz="0 0 0.003" rpy="0 0 0" />
+      <origin xyz="-0.10442512118169343 0 0.003" rpy="0 0 0" />
       <mass value="4.115922297947584"/>
       <inertia ixx="0.07709942829583775" ixy="0" ixz="0"
         iyy="0.09727669030336457" iyz="0" izz="0.17435142306541462"/>
@@ -39,7 +39,7 @@
     <collision>
       <origin xyz="-0.111 0 0.003" rpy="0 0 0" />
       <geometry>
-        <box size="0.57 0.52 0.006"/>
+        <box size="0.570 0.520 0.006"/>
       </geometry>
     </collision>
   </link>
@@ -50,10 +50,10 @@
   <xacro:main_column name="right_column" origin_xyz="-0.0835 -0.250 0.083" />
   
   <!-- Secondary columns -->
-  <xacro:secondary_column name="fleft_column" origin_xyz="0.164 0.139 0.083" />  <!-- Front-left -->
-  <xacro:secondary_column name="fright_column" origin_xyz="0.164 -0.139 0.083" />  <!-- Front-right -->
-  <xacro:secondary_column name="rleft_column" origin_xyz="-0.337 0.212 0.083" />  <!-- Rear-left -->
-  <xacro:secondary_column name="rright_column" origin_xyz="-0.337 -0.212 0.083" />  <!-- Rear-right -->
+  <xacro:secondary_column name="fleft_column" origin_xyz="0.164 0.139 0.083" />
+  <xacro:secondary_column name="fright_column" origin_xyz="0.164 -0.139 0.083" />
+  <xacro:secondary_column name="rleft_column" origin_xyz="-0.337 0.212 0.083" />
+  <xacro:secondary_column name="rright_column" origin_xyz="-0.337 -0.212 0.083" />
 
   <!-- Castor support columns -->
   <xacro:castor_column name="fc_column" origin_xyz="-0.332  0    0.022815" />
@@ -131,7 +131,7 @@
     </visual>
 
     <inertial>
-      <origin xyz="0 0 0.003" rpy="0 0 0" />
+      <origin xyz="0.0035 0 0.003" rpy="0 0 0" />
       <mass value="0.190755"/>
       <inertia ixx="0.00023339157749999997" ixy="0" ixz="0"
         iyy="0.00014052256237261147" iyz="0" izz="0.0003727696098726115"/>
@@ -151,7 +151,6 @@
   </joint>
 
   <!-- Battery link -->
-  <!--
   <link name="battery_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${-pi / 2}" />
@@ -180,7 +179,6 @@
     <child link="battery_link" />
     <origin xyz="-0.209 0 0.0685" rpy="0 0 0" />
   </joint>
-  -->
 
   <!-- Left drive wheel -->
   <xacro:drive_wheel name="left_wheel" reflect="1" />
@@ -188,8 +186,6 @@
   <xacro:drive_wheel name="right_wheel" reflect="-1" />
 
   <!-- Castor wheel -->
-  <!--
   <xacro:castor_wheel name="castor" origin_xyz="-0.016 0 -0.00075" />
-  -->
 
 </robot>
