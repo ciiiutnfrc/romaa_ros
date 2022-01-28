@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Node of joystick driver -->
+  <node pkg="joy" type="joy_node" name="joy_node" output="log"> 
+    <!-- <param name="autorepeat_rate" value="2" /> -->
+  </node>
+
+  <!-- Node for joystick teleoperation -->
+  <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_node" output="log">
+    <!-- Parameter for 'teleop_node' node -->
+    <param name="enable_button" value="5" />
+    <param name="axis_linear" value="1" />
+    <param name="axis_angular" value="3" />
+    <param name="scale_linear" value="0.8" />
+    <param name="scale_angular" value="1.0" />
+  </node>
+
+</launch>
+
