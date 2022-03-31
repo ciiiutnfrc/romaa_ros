@@ -45,12 +45,18 @@
   </gazebo>
   <gazebo reference="left_wheel_link">
     <material>Gazebo/Gray</material>
+    <mu>100.0</mu>
+    <mu2>50.0</mu2>
   </gazebo>
   <gazebo reference="right_wheel_link">
     <material>Gazebo/Gray</material>
+    <mu>100.0</mu>
+    <mu2>50.0</mu2>
   </gazebo>
   <gazebo reference="castor_link">
     <material>Gazebo/Gray</material>
+    <mu>100.0</mu>
+    <mu2>50.0</mu2>
   </gazebo>
   <gazebo reference="castor_b1_link">
     <material>Gazebo/Gray</material>

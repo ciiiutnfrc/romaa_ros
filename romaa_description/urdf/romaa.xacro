@@ -151,6 +151,7 @@
   </joint>
 
   <!-- Battery link -->
+  <!--
   <link name="battery_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${-pi / 2}" />
@@ -179,6 +180,7 @@
     <child link="battery_link" />
     <origin xyz="-0.209 0 0.0685" rpy="0 0 0" />
   </joint>
+  -->
 
   <!-- Left drive wheel -->
   <xacro:drive_wheel name="left_wheel" reflect="1" />
