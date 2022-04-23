@@ -151,25 +151,22 @@
   </joint>
 
   <!-- Battery link -->
-  <!--
   <link name="battery_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 ${-pi / 2}" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <box size="0.175 0.166 0.125"/>
       </geometry>
       <material name="dark_gray" />
     </visual>
-
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 ${-pi / 2}" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <mass value="11.467"/>
       <inertia ixx="0.04126479814479167" ixy="0" ixz="0"
         iyy="0.0441976080729167" iyz="0" izz="0.05559915751979169"/>
     </inertial>
-
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 ${-pi / 2}" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <box size="0.175 0.166 0.125"/>
       </geometry>
@@ -180,7 +177,6 @@
     <child link="battery_link" />
     <origin xyz="-0.209 0 0.0685" rpy="0 0 0" />
   </joint>
-  -->
 
   <!-- Left drive wheel -->
   <xacro:drive_wheel name="left_wheel" reflect="1" />
@@ -188,6 +184,6 @@
   <xacro:drive_wheel name="right_wheel" reflect="-1" />
 
   <!-- Castor wheel -->
-  <xacro:castor_wheel name="castor" origin_xyz="-0.016 0 -0.00075" />
+  <xacro:castor_wheel name="castor" origin_x="-0.016" />
 
 </robot>

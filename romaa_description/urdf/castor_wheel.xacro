@@ -1,14 +1,21 @@
 <?xml version='1.0'?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:property name="b1_L" value="0.05" />
+  <xacro:property name="b1_H" value="0.0015" />
+  <xacro:property name="csupport_H" value="0.06863" />
+  <xacro:property name="b2_H" value="0.050" />
+  <xacro:property name="R_rueda" value="0.0245" />
+  <xacro:property name="z" value="${csupport_H - (b2_H/2) - b1_H - R_rueda}" />
+
   <!-- Macro for castor wheel -->
-  <xacro:macro name="castor_wheel" params="name origin_xyz">
+  <xacro:macro name="castor_wheel" params="name origin_x">
     <!-- Castor wheel base (cube) -->
     <link name="${name}_b1_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.05 0.05 0.0015" />
+          <box size="${b1_L} ${b1_L} ${b1_H}" />
         </geometry>
         <material name="dark_gray" />
       </visual>
@@ -26,7 +33,7 @@
       </collision>
     </link>
     <joint name="${name}_b1_joint" type="fixed">
-      <origin xyz="${origin_xyz}" rpy="0 0 0" />
+      <origin xyz="${origin_x} 0 -${b1_H / 2}" rpy="0 0 0" />
       <parent link="csupport_link" />
       <child link="${name}_b1_link" />
     </joint>
@@ -41,21 +48,21 @@
         <material name="dark_gray" />
       </visual>
       <inertial>
-        <origin xyz="0.0048464279113944195 0 -0.0265" rpy="0 0 0" />
+        <origin xyz="0.0048464279113944195 0 0" rpy="0 0 0" />
         <mass value="0.03629327674887137" />
         <inertia ixx="1.2058314484155499e-05" ixy="0" ixz="0"
             iyy="9.601587537327375e-06" iyz="0" izz="6.537703376119888e-06" />
       </inertial>
       <collision>
-        <origin xyz="0 0 -0.025" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder length="0.050" radius="0.030" />
+          <cylinder length="${b2_H}" radius="0.030" />
         </geometry>
       </collision>
     </link>
     <joint name="${name}_rot1_joint" type="continuous">
-      <dynamics damping="0" friction="1.0" /> 
-      <origin xyz="0 0 0.00075" rpy="0 0 0" />
+      <dynamics damping="0.0" friction="0.5" />
+      <origin xyz="0 0 -${(b1_H/2) + (b2_H/2)}" rpy="0 0 0" />
       <parent link="${name}_b1_link" />
       <child link="${name}_b2_link" />
       <axis xyz="0 0 1" />
@@ -71,7 +78,7 @@
         <material name="light_gray" />
       </visual>
       <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="${pi / 2} 0 0" />
         <mass value="0.0233673699785761" />
         <inertia ixx="4.260422817439314e-06" ixy="0" ixz="0"
             iyy="7.362120181084859e-06" iyz="0" izz="4.260422817439261e-06" />
@@ -84,8 +91,8 @@
       </collision>
     </link>
     <joint name="${name}_rot2_joint" type="continuous">
-      <!-- <dynamics damping="0" friction="0.5" /> -->
-      <origin xyz="-0.026 0 -0.04363" rpy="0 0 0" />
+      <dynamics damping="0.0" friction="0.5" />
+      <origin xyz="-0.026 0 -${z}" rpy="0 0 0" />
       <parent link="${name}_b2_link" />
       <child link="${name}_link" />
       <axis xyz="0 1 0" />

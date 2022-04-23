@@ -45,18 +45,33 @@
   </gazebo>
   <gazebo reference="left_wheel_link">
     <material>Gazebo/Gray</material>
-    <mu>100.0</mu>
-    <mu2>50.0</mu2>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1e8</kp>
+    <kd>1e6</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir>1 0 0</fdir>
   </gazebo>
   <gazebo reference="right_wheel_link">
     <material>Gazebo/Gray</material>
-    <mu>100.0</mu>
-    <mu2>50.0</mu2>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1e8</kp>
+    <kd>1e6</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir>1 0 0</fdir>
   </gazebo>
   <gazebo reference="castor_link">
     <material>Gazebo/Gray</material>
-    <mu>100.0</mu>
-    <mu2>50.0</mu2>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1e8</kp>
+    <kd>1e6</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.001</maxVel>
+    <fdir>1 0 0</fdir>
   </gazebo>
   <gazebo reference="castor_b1_link">
     <material>Gazebo/Gray</material>
@@ -75,11 +90,13 @@
       <wheelAcceleration>0</wheelAcceleration>
       <wheelSeparation>0.440</wheelSeparation>
       <wheelDiameter>0.140</wheelDiameter>
-      <wheelTorque>5</wheelTorque>
+      <wheelTorque>10</wheelTorque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <odometrySource>1</odometrySource>
+      <odometrySource>world</odometrySource>
+      <!--<odometrySource>encoder</odometrySource>-->
+      <rosDebugLevel>na</rosDebugLevel>
       <publishTf>1</publishTf>
       <publishOdomTF>true</publishOdomTF>
       <robotBaseFrame>base_link</robotBaseFrame>
