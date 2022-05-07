@@ -6,6 +6,15 @@
   <xacro:include filename="$(find romaa_description)/urdf/castor_wheel.xacro" />
   <xacro:include filename="$(find romaa_description)/urdf/romaa.gazebo" />
 
+  <xacro:include filename="$(find romaa_description)/urdf/laser.gazebo" />
+  <xacro:arg name="laser_enabled" default="$(optenv ROMAA_LASER 0)" />
+  <xacro:property name="laser_min_dist" value="0.10" />
+  <xacro:property name="laser_max_dist" value="10.0" />
+  <xacro:property name="laser_samples" value="540" />
+  <xacro:property name="laser_resol" value="0.5" />
+  <xacro:property name="laser_min_angle" value="${-(3/4)*pi}" />
+  <xacro:property name="laser_max_angle" value="${(3/4)*pi}" />
+
   <material name="blue">
     <color rgba="0 0 0.8 1" />
   </material>
@@ -17,6 +26,9 @@
   </material>
   <material name="light_gray">
     <color rgba="0.4 0.4 0.4 1" />
+  </material>
+  <material name="gray">
+    <color rgba="0.8 0.8 .8 1" />
   </material>
 
   <!-- Base link (bottom) -->
@@ -151,6 +163,7 @@
   </joint>
 
   <!-- Battery link -->
+  <!--
   <link name="battery_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -177,6 +190,7 @@
     <child link="battery_link" />
     <origin xyz="-0.209 0 0.0685" rpy="0 0 0" />
   </joint>
+  -->
 
   <!-- Left drive wheel -->
   <xacro:drive_wheel name="left_wheel" reflect="1" />
@@ -185,5 +199,37 @@
 
   <!-- Castor wheel -->
   <xacro:castor_wheel name="castor" origin_x="-0.016" />
+
+  <!-- Laser rangefinder sensor -->
+  <xacro:if value="$(arg laser_enabled)">
+    <link name="laser_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://romaa_description/meshes/hokuyo.dae" />
+        </geometry>
+        <material name="gray" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.07" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="1e-5" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+      </inertial>
+    </link>
+    <joint name="joint_laser" type="fixed" >
+      <parent link="top_front_link" />
+      <child link="laser_link" />
+      <origin xyz="0.0 0 0.035" rpy="0 0 0" />
+    </joint>
+
+    <xacro:laser min_dist="${laser_min_dist}" max_dist="${laser_max_dist}" samples="${laser_samples}"
+        resol="${laser_resol}" min_angle="${laser_min_angle}" max_angle="${laser_max_angle}" />
+  </xacro:if>
 
 </robot>
