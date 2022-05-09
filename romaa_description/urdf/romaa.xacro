@@ -11,7 +11,7 @@
   <xacro:property name="laser_min_dist" value="0.10" />
   <xacro:property name="laser_max_dist" value="10.0" />
   <xacro:property name="laser_samples" value="540" />
-  <xacro:property name="laser_resol" value="0.5" />
+  <xacro:property name="laser_resol" value="1" />
   <xacro:property name="laser_min_angle" value="${-(3/4)*pi}" />
   <xacro:property name="laser_max_angle" value="${(3/4)*pi}" />
 
