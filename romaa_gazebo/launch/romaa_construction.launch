@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!--- Launch Gazebo with 'construction' world -->
+  <include file="$(find romaa_gazebo)/launch/construction.launch" />
+
+  <!-- Run 'robot_state_publisher' and 'joint_state_publisher' nodes -->
+  <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher" />
+  <node pkg="joint_state_publisher" name="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Spawn RoMAA robot model -->
+  <include file="$(find romaa_gazebo)/launch/spawn_xacro.launch">
+      <arg name="z" value="0.0" />
+  </include>
+
+</launch>
