@@ -2,6 +2,12 @@
 
 > :memo: El repositorio `romaa_ros` con el driver del robot RoMAA fue renombrado a `romaa_driver` ([link](https://github.com/ciiiutnfrc/romaa_driver))
 
+<p float="center">
+  <img src="doc/RoMAAGazebo.png" title="Simulación en Gazebo"  width="400" />
+  <img src="doc/RoMAARViz.png"   title="Visualización en RViz" width="400" />
+</p>
+
+
 
 ## Visualización del modelo URDF en RViz
 
