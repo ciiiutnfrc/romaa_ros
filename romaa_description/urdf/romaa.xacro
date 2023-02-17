@@ -192,6 +192,36 @@
   </joint>
   -->
 
+  <!-- Sensor bar link -->
+  <link name="sensbar_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://romaa_description/meshes/romaa_sensor_bar_with_holes.stl" />
+      </geometry>
+      <material name="black" />
+    </visual>
+
+    <inertial>
+      <origin xyz="-0.17062558720045456 0 7.489880295179326" />
+      <mass value="0.6705571211803331"/>
+      <inertia ixx="0.006744639700932016" ixy="0" ixz="0"
+        iyy="0.00015281269307933294" iyz="0" izz="0.006872329258775596"/>
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://romaa_description/meshes/romaa_sensor_bar.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="sensor_bar_joint" type="fixed">
+    <parent link="top_front_link" />
+    <child link="sensbar_link" />
+    <origin xyz="0.129 0 0.006" rpy="0 0 0" />
+  </joint>
+
   <!-- Left drive wheel -->
   <xacro:drive_wheel name="left_wheel" reflect="1" />
   <!-- Right drive wheel -->
