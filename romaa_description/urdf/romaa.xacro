@@ -7,7 +7,7 @@
   <xacro:include filename="$(find romaa_description)/urdf/romaa.gazebo" />
 
   <xacro:include filename="$(find romaa_description)/urdf/laser.gazebo" />
-  <xacro:arg name="laser_enabled" default="$(optenv ROMAA_LASER 0)" />
+  <xacro:arg name="laser_enabled" default="false" />
   <xacro:property name="laser_min_dist" value="0.10" />
   <xacro:property name="laser_max_dist" value="10.0" />
   <xacro:property name="laser_samples" value="540" />

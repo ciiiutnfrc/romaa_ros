@@ -3,6 +3,7 @@
   
   <arg name="model" default="romaa.xacro" />
   <arg name="robot_name" default="romaa" />
+  <arg name="laser" default="false" />
 
   <arg name="x" default="0" />
   <arg name="y" default="0" />
@@ -11,7 +12,8 @@
   <arg name="P" default="0" />
   <arg name="Y" default="0" />
 
-  <param name="robot_description" command="$(find xacro)/xacro '$(find romaa_description)/urdf/romaa.xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find romaa_description)/urdf/romaa.xacro'
+      laser_enabled:=$(arg laser)" />
 
   <node pkg="gazebo_ros" type="spawn_model" name="romaa_spawn" output="screen"
     args="-urdf -param robot_description -model $(arg robot_name)
