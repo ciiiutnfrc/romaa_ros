@@ -46,6 +46,9 @@
   <gazebo reference="sensbar_link">
     <material>Gazebo/Black</material>
   </gazebo>
+  <gazebo reference="laser_link">
+    <material>Gazebo/DarkGray</material>
+  </gazebo>
   <gazebo reference="left_wheel_link">
     <material>Gazebo/Gray</material>
     <mu1>1.0</mu1>

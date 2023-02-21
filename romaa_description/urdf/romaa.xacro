@@ -8,6 +8,9 @@
 
   <xacro:include filename="$(find romaa_description)/urdf/laser.gazebo" />
   <xacro:arg name="laser_enabled" default="false" />
+  <xacro:arg name="laser_on_bar" default="false" />
+
+  <!-- Laser rangefinder properties -->
   <xacro:property name="laser_min_dist" value="0.10" />
   <xacro:property name="laser_max_dist" value="10.0" />
   <xacro:property name="laser_samples" value="540" />
@@ -236,7 +239,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://romaa_description/meshes/hokuyo.dae" />
+          <mesh filename="package://romaa_description/meshes/sick_tim_1xxx.stl" />
         </geometry>
         <material name="gray" />
       </visual>
@@ -255,7 +258,18 @@
     <joint name="joint_laser" type="fixed" >
       <parent link="top_front_link" />
       <child link="laser_link" />
-      <origin xyz="0.0 0 0.035" rpy="0 0 0" />
+      <xacro:if value="$(arg laser_on_bar)">
+        <!-- Hokuyo laser rangefinder -->
+        <!--<origin xyz="0.129 0 0.056" rpy="0 0 0" />-->
+        <!-- Sick laser rangefinder -->
+        <origin xyz="0.129 0 0.084" rpy="0 0 0" />
+      </xacro:if>
+      <xacro:unless value="$(arg laser_on_bar)">
+        <!-- Hokuyo laser rangefinder -->
+        <!--<origin xyz="0.0 0 0.041" rpy="0 0 0" />-->
+        <!-- Sick laser rangefinder -->
+        <origin xyz="0.0 0 0.069" rpy="0 0 0" />
+      </xacro:unless>
     </joint>
 
     <xacro:laser min_dist="${laser_min_dist}" max_dist="${laser_max_dist}" samples="${laser_samples}"
